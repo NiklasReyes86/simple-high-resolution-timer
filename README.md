@@ -36,3 +36,10 @@ The trade-off is that the timer only knows about differences it has seen. There 
 A timer with no marks has nothing to measure. `elapsedSinceLast()` throws rather than returning `0`, because `0` would silently hide a missing `mark()` call. If you want a zero baseline, call `mark('start')` before you begin. Similarly, `time()` and `elapsed()` throw on unknown mark names instead of returning `NaN`.
 
 Marks are stored in a `Map`, so re-marking an existing name replaces its timestamp without changing insertion order. That is the documented behaviour and the tests rely on it.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
