@@ -1,6 +1,6 @@
 {
   "name": "simple-high-resolution-timer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Measures elapsed time between named marks with performance.now",
   "type": "module",
   "main": "src/index.js",
